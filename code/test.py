@@ -5,7 +5,7 @@ import Adafruit_MCP3008
 # Hardware SPI configuration
 SPI_PORT    = 0
 SPI_DEVICE  = 0
-mcp = Adafruit_MCP3008.MCP_3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
 print('soil.py is running...')
 while True:
