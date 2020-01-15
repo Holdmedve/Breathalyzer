@@ -23,8 +23,9 @@ def emailsender(ImgFileName):
     <h1 align="center">Kedves felhasználó!</h1>
     <font size="4">Az Ön által gondozott növény földjének nedvesség<br>
     tartalma a kritikus érték alá sülyedt.<br>
-    Öntözze meg a növényét!</font>
-    <img src="C:/Users/rijon/28767881_2038175236467148_221478428_o.png">
+    Öntözze meg a növényét!<br>
+    A lenti képen látható grafikon a föld nedveségtartalmának alakulását <br>
+    mutatja.</font>
     </html>
     """
 
