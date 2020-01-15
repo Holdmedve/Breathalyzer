@@ -6,9 +6,9 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
-sender_email = "radvanszkyij@gmail.com"
-receiver_email = "radvanszkyij@gmail.com"
-password = "*******"
+sender_email = "berrypiraspPHY@gmail.com"
+receiver_email = "berrypiraspPHY@gmail.com"
+password = "WASD1234"
 ImgFileName="kep.png"
 
 img_data = open(ImgFileName, 'rb').read()
