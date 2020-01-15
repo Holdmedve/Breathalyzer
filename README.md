@@ -1,2 +1,2 @@
 # SoilMoistureMeter
-test hogy mukodik-e
+Mikroelektromechanikai rendszerek (GKNB_INTM020)

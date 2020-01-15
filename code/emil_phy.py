@@ -1,44 +1,48 @@
+#e1.1 with picture
+##################
+import os
 import smtplib, ssl
 from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 
+def emailsender(ImgFileName):
+    sender_email = "berrypiraspPHY@gmail.com"
+    receiver_email = "berrypiraspPHY@gmail.com"
+    password = "WASD1234"
 
-sender_email = "@gmail.com"
-receiver_email = "@indamail.hu"
-password = "ide jön a jelszó"
-
-message = MIMEMultipart("alternative")
-message["Subject"] = "targy"
-message["From"] = sender_email
-message["To"] = receiver_email
-
-# Create the plain-text and HTML version of your message
-text = """\
-Hi,
-html: """
-html = """\
-<html>
-<p align="center">
-közép
-</p>
+    img_data = open(ImgFileName, 'rb').read()
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "üzenet a földnedvesség-mérőtől"
+    message["From"] = sender_email
+    message["To"] = receiver_email
 
 
-</html>
-"""
+    html = """\
+    <html>
+    <h1 align="center">Kedves felhasználó!</h1>
+    <font size="4">Az Ön által gondozott növény földjének nedvesség<br>
+    tartalma a kritikus érték alá sülyedt.<br>
+    Öntözze meg a növényét!<br>
+    A lenti képen látható grafikon a föld nedveségtartalmának alakulását <br>
+    mutatja.</font>
+    </html>
+    """
 
-# Turn these into plain/html MIMEText objects
-part1 = MIMEText(text, "plain")
-part2 = MIMEText(html, "html")
 
-# Add HTML/plain-text parts to MIMEMultipart message
-# The email client will try to render the last part first
-message.attach(part1)
-message.attach(part2)
+    part2 = MIMEText(html, "html")
+    image = MIMEImage(img_data, name=os.path.basename(ImgFileName))
 
-# Create secure connection with server and send email
-context = ssl.create_default_context()
-with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-    server.login(sender_email, password)
-    server.sendmail(
-        sender_email, receiver_email, message.as_string()
-    )
+    message.attach(image)
+    message.attach(part2)
+
+    # Create secure connection with server and send email
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(
+            sender_email, receiver_email, message.as_string()
+        )
+#ImgFileName tartalmazza a kép tipusát is pl.:emailsender("kep.png")
+emailsender("kep.png")
+print('Hello ! I sent an email')
