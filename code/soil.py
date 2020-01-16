@@ -3,9 +3,6 @@ import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 
 from datetime import datetime
-from random import seed
-from random import randint
-seed(1)
 
 # Hardware SPI configuration
 SPI_PORT    = 0
@@ -18,19 +15,15 @@ Intervall = 3 # measured in seconds
 
 while 42:
     try:
-        #print("soil.py has enetered try")
         time.sleep(Intervall) 
     except KeyboardInterrupt:
-        #print("KeyboardInterrupt has been caught.")
         myFile.close()
         break
-    i = str(mcp.read_adc(0))
+    i = str(mcp.read_adc(7))
     t = str(datetime.now())
-    #print(i)
-    #print(t)
-    if int(i) > 400:
+    if int(i) > 1000:
         print('IT IS GETTING DRY!!!\n ...Sending email...')
-        #send_mail()
+        #emailsender()
     s = t[:19] + ',' + i + '\t'
     myFile.write(s)
 
